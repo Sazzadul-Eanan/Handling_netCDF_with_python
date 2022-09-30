@@ -68,6 +68,7 @@ for index, row in stations.iterrows() :
         
         # Nested for loop to iterate through the individual year using the index value
         for t_index in np.arange(0, len(d_range)) :
+            print('Recording the value for' +station+' : '+str(d_range[t_index]))       # This will show the real-time recording status on the console 
             df.loc[d_range[t_index]]['precipitation'] = precipitation[t_index, min_lat_index, min_lon_index]
     
-    df.to_csv(station + '.csv')     # To generate different station-wise .csv file  
+    df.to_csv(station + '.csv')     # To generate different station-wise different .csv file  
