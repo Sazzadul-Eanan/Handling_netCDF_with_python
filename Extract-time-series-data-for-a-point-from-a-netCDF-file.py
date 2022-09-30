@@ -42,7 +42,7 @@ print(preipitation_374th_day, preci.units)      # Displaying the unit as well
 
 # Taking idea about the date format of the netCDF file using the index for the 'Date' column of my csv to be extracted
 
-date = data.variables['time'].units[11:19]     # To get the idea of the index value of 'time' variable, first run 'data.variables['time']' on the console 
+date = data.variables['time'].units[11:19]     # To get the idea of the index value of 'time' variable, first run 'data.variables['time'].units' on the console 
 
 print(date)
 
