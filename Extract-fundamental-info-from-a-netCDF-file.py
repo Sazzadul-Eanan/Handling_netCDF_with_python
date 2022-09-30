@@ -1,11 +1,10 @@
 # Import necessary library
 
 from netCDF4 import Dataset
-import numpy as np
 
 # Reading in the netCDF file
 
-data = Dataset(r'C:\Users\lenovo\Desktop\NetCDF\chirps-1981.nc','r')
+data = Dataset(r'C:\Users\lenovo\Desktop\NetCDF\CHIRPS-1962.nc','r')     # File source : CHIRPS dataset
 
 # Show the file metadata
 
@@ -43,6 +42,7 @@ print(time_data)
 
 long_data = data.variables['longitude'][:]    
 print(long_data)
+
 
 
 

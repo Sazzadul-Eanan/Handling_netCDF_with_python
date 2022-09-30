@@ -32,7 +32,7 @@ min_index_lon = sqr_diff_lon.argmin()    # This will give us the actual location
 # Displaying the amount of precipitation recieved in the POI on a particular day using the index values of the variables
 
 preci = data.variables['precip']
-preipitation_372th_day = preci[6, 292, 1085]    # Corresponding_index_serial = [time, lat, long]
+preipitation_372th_day = preci[6, 292, 1085]    # Here corresponding index_row represents = [time, lat, long]
 
 print(preipitation_372th_day)
 
@@ -57,16 +57,16 @@ date_col = pd.date_range(start = starting_date, end = ending_date)
 
 # Creating the model data frame
 
-df = pd.DataFrame(0, columns = ['Precipitation'], index = date_col)
+df = pd.DataFrame(0, columns = ['Precipitation'], index = date_col)      # 0 is the dummy value for the newly created column 'Precipitation' 
 
-# Creating a numpy array to automatically extract the number of days from the netCDF 'time' variable 
+# Creating a numpy array to automatically extract the number of days from the netCDF's 'time' variable 
 
 date_time = np.arange(0, data.variables['time'].size)
 
 for time_index in date_time :
     df.iloc[time_index] = preci[time_index, min_index_lat, min_index_lon]
 
-# Saving the time-series into a csv 
+# Saving the time-series into a .csv file 
 
 df.to_csv('Time-series-at-POI.csv')
 

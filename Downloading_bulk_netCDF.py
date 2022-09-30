@@ -3,7 +3,7 @@
 import requests
 import numpy as np
 
-# Provide the dataset-archive credentials if the authorization parameter is required
+# Provide the dataset-archive credentials IF the authorization parameter is required
 
 username = ' '
 password = ' '     
@@ -20,4 +20,4 @@ for year in years :
     
     r = requests.get(url, authorization = (username, password), allow_redirects = True)      # Don't use the 'authorization' parameter if the dataset-archive (website) credentials are not required to access    
     
-    open (str(year) + '.nc', 'wb').write(r.content)     # Changing the file name as '19xx.nc' while saving
+    open (str(year) + '.nc', 'wb').write(r.content)      # Changing the file name as '19xx.nc' while saving

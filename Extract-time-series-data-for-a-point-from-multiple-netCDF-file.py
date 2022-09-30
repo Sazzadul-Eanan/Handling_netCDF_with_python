@@ -14,7 +14,7 @@ for file in glob.glob('*.nc') :      # Here the * is given for identifying all t
     print(file)
     data = Dataset(file, 'r')
     time = data.variables['time']
-    year = time.units[11:15]
+    year = time.units[11:15]         # Here the index value is to sort out the year as '19xx' format 
     all_years.append(year)
     
 # Creating an empty pandas dataframe covering the whole range of data
@@ -25,7 +25,7 @@ year_end = max(all_years)
 date_range = pd.date_range(start = str(year_start)+'-01-01', 
                            end = str(year_end)+'-12-31', freq = 'D')     # 'D' means daily interval, to get the data in monthly interval input'M' 
 
-df = pd.DataFrame(0, columns = ['Precipitation'], index = date_range)
+df = pd.DataFrame(0, columns = ['Precipitation'], index = date_range)    # 0 is the dummy value for the newly created column 'Precipitation'
 
 # Defining the lat lon for the point of interest (POI)
 
@@ -60,7 +60,7 @@ for yr in all_years :
     end = str(yr) + '-12-31'
     d_range = pd.date_range(0, start = start, end = end, freq = 'D')
     
-    # Nested for loop to iterate through the individual year using the index value
+    # Nested 'for loop' to iterate through each individual year using the index value
     for t_index in np.arange(0, len(d_range)) :
         print('Recording the value for : ' +str(d_range[t_index]))       # This will show the real-time recording status on the console
         df.loc[d_range[t_index]]['precipitation'] = precipitation[t_index, min_lat_index, min_lon_index]
